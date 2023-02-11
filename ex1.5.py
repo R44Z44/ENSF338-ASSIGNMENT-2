@@ -25,7 +25,7 @@ memoization_time = []
 
 for i in range(36):
     start_time = timeit.default_timer()
-    func(i)
+    func(i , [])
     original_time.append(timeit.default_timer() - start_time)
     
     start_time = timeit.default_timer()
