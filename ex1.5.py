@@ -25,11 +25,11 @@ memoization_time = []
 
 for i in range(36):
     start_time = timeit.default_timer()
-    func(i , [])
+    func(i)
     original_time.append(timeit.default_timer() - start_time)
     
     start_time = timeit.default_timer()
-    func_m(i)
+    func_m(i, cache)
     memoization_time.append(timeit.default_timer() - start_time)
 
 plt.plot(range(36), original_time, label='Original code')
@@ -39,3 +39,4 @@ plt.xlabel('Input (n)')
 plt.ylabel('Time (seconds)')
 plt.title('Comparison of original code and memoization code performance')
 plt.show()
+
