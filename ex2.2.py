@@ -38,7 +38,7 @@ for x in d:
     quicksort.append(elaspedTime)
     lilen.append(lilen)
 
-plt.plot(lilen, quicksort)
+plt.scatter(lilen, quicksort)
 plt.xlabel("List length")
 plt.ylabel("Exec Time")
 plt.show()
