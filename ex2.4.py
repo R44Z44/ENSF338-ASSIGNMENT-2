@@ -11,8 +11,7 @@ def func1(arr, low, high):
         func1(arr, pi + 1, high)
 
 def func2(array, start, end):
-    middle = (start + end) // 2
-    p = array[middle]
+    p = array[start]
     low = start + 1
     high = end
     while True:
@@ -27,20 +26,29 @@ def func2(array, start, end):
     array[start], array[high] = array[high], array[start]
     return high
 
-with open("ex2TestData.json", "r") as file:
-    data = json.load(file)
+with open("ex2.2.json", "w") as file:
+    d = json.load(file)
 
-listLengths = []
-quicksortTime= []
+lilen = []
+quicksort= []
+for sublist in d:
+    start_time = quicksort.time()
 
-for tests in data:
-    listLength = len(tests)
-    elaspedTime = timeit.timeit(lambda : func1(tests, 0, (listLength - 1) ), number= 1)
-    quicksortTime.append(elaspedTime)
-    listLengths.append(listLength)
+    func1(sublist, 0, len(sublist)-1)
+        
+    end_time = quicksort.time()
 
-plt.plot(listLengths, quicksortTime)
-plt.title("Time taken for Quicksort vs Length of list being sorted")
-plt.xlabel("Lenght of List")
-plt.ylabel("Execution Time")
+    quicksort.append(end_time - start_time)
+    lilen.append((str(len(sublist))))
+
+for z in range (0,len(lilen)):
+    print("time taken for length", lilen[z], "is", quicksort[z],"seconds")
+
+
+print(d[0])
+
+plt.scatter(lilen, quicksort)
+plt.xlabel("List length")
+plt.ylabel("Exec Time")
+plt.title('Time vs. List Length')
 plt.show()
