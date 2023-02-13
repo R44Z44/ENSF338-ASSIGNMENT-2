@@ -29,25 +29,25 @@ def func2(array, start, end):
 with open("ex2.2.json", "w") as file:
     d = json.load(file)
 
-lilen = []
+llen = []
 quicksort= []
-for sublist in d:
+for subarray in d:
     start_time = quicksort.time()
 
-    func1(sublist, 0, len(sublist)-1)
+    func1(subarray, 0, len(subarray)-1)
         
     end_time = quicksort.time()
 
     quicksort.append(end_time - start_time)
-    lilen.append((str(len(sublist))))
+    llen.append((str(len(subarray))))
 
-for z in range (0,len(lilen)):
-    print("time taken for length", lilen[z], "is", quicksort[z],"seconds")
+for z in range (0,len(llen)):
+    print("time taken for length", llen[z], "is", quicksort[z],"seconds")
 
 
 print(d[0])
 
-plt.scatter(lilen, quicksort)
+plt.scatter(llen, quicksort)
 plt.xlabel("List length")
 plt.ylabel("Exec Time")
 plt.title('Time vs. List Length')
