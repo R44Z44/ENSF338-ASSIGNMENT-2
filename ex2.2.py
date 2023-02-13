@@ -29,16 +29,16 @@ def func2(array, start, end):
 with open("ex2.2.json", "w") as file:
     d = json.load(file)
 
-lilen = []
+llen = []
 quicksort= []
 
 for x in d:
-    lilen = len(x)
-    elaspedTime = timeit.timeit(lambda : func1(x, 0, (lilen - 1) ), n= 1)
+    llen = len(x)
+    elaspedTime = timeit.timeit(lambda : func1(x, 0, (llen - 1) ), number= 100)
     quicksort.append(elaspedTime)
-    lilen.append(lilen)
+    llen.append(llen)
 
-plt.scatter(lilen, quicksort)
+plt.scatter(llen, quicksort)
 plt.xlabel("List length")
 plt.ylabel("Exec Time")
 plt.show()
